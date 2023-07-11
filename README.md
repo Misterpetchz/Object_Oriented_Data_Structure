@@ -2,4 +2,4 @@
 
 <p>01076109 Object Oriented Data Structures</p>
 
-<img src="https://tenor.com/view/the-simpsons-homer-simpson-hiding-embarrassed-bush-gif-17685536" alt="see yaa!!">
+<img src="https://i.gifer.com/150E.gif" alt="see yaa!!">
