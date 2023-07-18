@@ -1,33 +1,61 @@
-# Didn't create Stack Class
+class Stack():
+    def __init__(self):
+        self.items = []
 
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+    
+    def isEmpty(self):
+        return len(self.items) == 0
+    
+    def peek(self):
+        return self.items[-1]
+    
+    def size(self):
+        return len(self.items)
+    
+    def __repr__(self) -> str:
+        return f'{self.items}'
+    
 def colorCrush(colors):
-    stack = []
+    stack = Stack()
     combo = 0
 
+    # check colors
+    
     for color in colors:
-        if not stack:
-            stack.append(color)
-        elif stack[-1] == color:
-            stack.append(color)
-            if len(stack) >= 3:
-                if stack[-1] == stack[-2] == stack[-3]:
+        if stack.isEmpty():
+            stack.push(color)
+        elif stack.items[-1] == color:
+            stack.push(color)
+            if stack.size() >= 3:
+                if stack.items[-1] == stack.items[-2] == stack.items[-3]:
                     combo += 1
-                    stack = stack[:-3]
+                    for _ in range(3):
+                        stack.pop()
         else:
-            stack.append(color)
-        
-    remaining_color = stack[::-1]
-    length = len(remaining_color)
-    if length != 0:
-        print(length)
-        print(''.join(remaining_color))
+            stack.push(color)
+    
+    # create stack to contain remain colors
+    remaining_stack = Stack()
+
+    while not stack.isEmpty():
+        color = stack.pop()
+        remaining_stack.push(color)
+
+    if remaining_stack.size() != 0:
+        print(remaining_stack.size())
+        print(''.join(remaining_stack.items))
         if combo > 1:
             print(f'Combo : {combo} ! ! !')
     else:
-        print(length)
+        print(remaining_stack.size())
         print('Empty')
         if combo > 1:
             print(f'Combo : {combo} ! ! !')
 
-input_str = input("Enter Input : ").split()
-colorCrush(input_str)
+colors = input("Enter Input : ").split()
+colorCrush(colors)

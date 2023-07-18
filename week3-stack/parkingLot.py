@@ -6,14 +6,13 @@ class Stack():
         self.items.append(item)
 
     def pop(self):
-        res = self.items[-1]
-        self.items = self.items[:-1]
-        return res
+        return self.items.pop()
+    
+    def peek(self):
+        return self.items[-1]
     
     def isEmpty(self):
-        if len(self.items) == 0:
-            return True
-        return False
+        return len(self.items) == 0
     
     def size(self):
         return len(self.items)
